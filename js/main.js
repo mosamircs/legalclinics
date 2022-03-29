@@ -388,11 +388,11 @@ const btnAdd = document.querySelector('#btn-add-sug');
                     newform.classList.add('row', 'g-3', 'justify-content-evenly' ,'pt-3','sug1');
                         newform.innerHTML = `<div class="col-md-4">
                                   <label for="inputtext1" class="form-label">الاقتراح ${numArray[0]}</label>
-                                  <input type="text" class="form-control" id="inputtext1" required>
+                                  <input type="text" class="form-control" id="inputtext1" name="company_name[]" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="inputtext2" class="form-label">الاقتراح ${numArray[1]}</label>
-                                    <input type="text" class="form-control" id="inputtext2" required>
+                                    <input type="text" class="form-control" id="inputtext2" name="company_name[]" required>
                                   </div>
                                 <div class="col-md-4 align-self-end text-center" >
                                     <button class="btn btn-outline-danger" id="btn-delete-sug" type="button" onclick="deleted1()">حذف اقتراحات</button>
@@ -407,11 +407,11 @@ const btnAdd = document.querySelector('#btn-add-sug');
                    
                         newform.innerHTML = `<div class="col-md-4">
                                   <label for="inputtext1" class="form-label">الاقتراح ${numArray[2]}</label>
-                                  <input type="text" class="form-control" id="inputtext1" required>
+                                  <input type="text" class="form-control" id="inputtext1"  name="company_name[]" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="inputtext2" class="form-label">الاقتراح ${numArray[3]}</label>
-                                    <input type="text" class="form-control" id="inputtext2" required>
+                                    <input type="text" class="form-control" id="inputtext2" name="company_name[]" required>
                                   </div>
                                 <div class="col-md-4 align-self-end text-center" >
                                     <button class="btn btn-outline-danger" id="btn-delete-sug" type="button" onclick="deleted2()">حذف اقتراحات</button>

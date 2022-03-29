@@ -67,18 +67,18 @@
                                         <form>
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">اسم المستخدم</label>
-                                                <input type="text" class="form-control" id="username" dir="rtl">
+                                                <input type="text" class="form-control" id="username" name = "username" dir="rtl">
                                                 
                                                 <div id="error-userName" class="error">يجب ادخال اسم المستخدم</div>
                                             </div>
                                             <div class="mb-3">
                                               <label for="email" class="form-label">البريد الالكتروني</label>
-                                              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@ex.com">
+                                              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name = "email" placeholder="example@ex.com">
                                               <div id="error-email" class="error">يجب ادخال بريد الكترونى صالح</div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label" >رقم الهاتف</label> 
-                                                    <input id="phone" type="tel" class="form-control" inputmode="tel">
+                                                    <input id="phone" type="tel" class="form-control" name = "phone" inputmode="tel">
                                                     <div id="error-phone" class="error">يجب ادخال رقم هاتف صالح</div>
                                                 </div>
                                             <button type="button" class="btn btn-primary" id="btnSubmit" onclick="changeLayer(1)">التالي</button>
@@ -127,7 +127,7 @@
             </div>
         </div>
         <section>
-            <form action="" id="form" class="needs-validation" novalidate>
+            <form action="thanks.php" method="POST" id = "dataSubmit" class="needs-validation" novalidate>
                 <div class="main-content" id="main" >
                     <div class="container">
                         <!-- layer--1 money& people -->
@@ -144,7 +144,7 @@
                                 <div class="choice d-flex justify-content-center flex-column align-items-end">
                                     <div class="form-check d-flex flex-row-reverse mt-3">
                                         <div>
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onclick="check1()"  required></div>
+                                            <input class="form-check-input" type="radio" name="company_type" id="exampleRadios1" value="option1" onclick="check1()"  required></div>
                                         <div class="mr-3">
                                             <label class="form-check-label" for="exampleRadios1">
                                                 <h2>شركة ذات مسئولية محدودة</h2>
@@ -154,10 +154,10 @@
                                                      <br>.كما لا يجوز لها إصدار أسهم أو سندات قابلة للتداول</p>
                                             </label>
                                         </div>
-                                        <div class="mr-8"><button class="btn down" id="down-1" type="button">تنزيل ملف الشروط</button></div> 
+                                        <div class="mr-8"><button class="btn down" id="down-1" type="button" onclick="download('Incorporation of a Limited Liability Company - Legal Clinic');" >تنزيل ملف الشروط</button></div> 
                                     </div>
                                       <div class="form-check d-flex flex-row-reverse mt-3">
-                                        <div><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" onclick="check2()" required></div>
+                                        <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios2" value="option2" onclick="check2()" required></div>
                                         <div class="mr-3">
                                             <label class="form-check-label" for="exampleRadios1">
                                                 <h2>شركة مساهمة مصري</h2>
@@ -167,10 +167,10 @@
                                                     </p>
                                             </label>
                                         </div>
-                                        <div class="mr-8"><button class="btn down"  id="down-2" style="display: none;" type="button">تنزيل ملف الشروط</button></div>
+                                        <div class="mr-8"><button class="btn down"  id="down-2" style="display: none;" type="button" onclick="download('Joint Stock Incorporation');" >تنزيل ملف الشروط</button></div>
                                     </div>
                                       <div class="form-check d-flex flex-row-reverse mt-3">
-                                        <div><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" onclick="check3()" required></div>
+                                        <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios3" value="option3" onclick="check3()" required></div>
                                         <div class="mr-3">
                                             <label class="form-check-label" for="exampleRadios1">
                                                 <h2>شركة شخص واحد ذات مسئولية محدودة</h2>
@@ -182,7 +182,7 @@
                                                     </p>
                                             </label>
                                         </div>
-                                        <div class="mr-8"><button class="btn down"  id="down-3" style="display: none;" type="button">تنزيل ملف الشروط</button></div>
+                                        <div class="mr-8"><button class="btn down"  id="down-3" style="display: none;" type="button" onclick="download('OPC requirements');" >تنزيل ملف الشروط</button></div>
                                     </div>
                                     <div class="invalid-feedback">يجب اختيار شركه</div>
                                 </div>
@@ -193,27 +193,27 @@
                                     </div>
                                     <div class="choice d-flex justify-content-center flex-column align-items-end">
                                         <div class="form-check d-flex flex-row-reverse mt-3">
-                                            <div><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" onclick="check4()"  required></div>
+                                            <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios4" value="option4" onclick="check4()"  required></div>
                                             <div class="mr-3">
                                                 <label class="form-check-label" for="exampleRadios4">
                                                     <h2>المنشاة الفردية</h2>
                                                     <p>هي نوع من المشاريع<br> يملكها ويديرها شخص واحد .ولا يوجد فيها تمييز قانوني بين المالك والكيان التجاري </p>
                                                 </label>
                                             </div>
-                                            <div class="mr-8"><button class="btn down" id="down-4" type="button">تنزيل ملف الشروط</button></div> 
+                                            <div class="mr-8"><button class="btn down" id="down-4" type="button" onclick="download('Sole Entity');" >تنزيل ملف الشروط</button></div> 
                                         </div>
                                           <div class="form-check d-flex flex-row-reverse mt-3">
-                                            <div><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="option5" onclick="check5()" required></div>
+                                            <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios5" value="option5" onclick="check5()" required></div>
                                             <div class="mr-3">
                                                 <label class="form-check-label" for="exampleRadios1">
                                                     <h2>شركة التضامن</h2>
                                                     <p>الشركة التي يعقدها اثنان أو أكثر بقصد الاتجـار على وجه الشركة بينهم بعنوان مخصوص <br>يكون اسما لها، الشركاء فيها متضامنون لجميع تعهـداتها ولـو لـم يحصل وضع الإمضاء عليها إلا من أحدهم <br>.إنما يـشترط أن يكـون هـذا الإمضاء بعنوان الشركة</p>
                                                 </label>
                                             </div>
-                                            <div class="mr-8"><button class="btn down"  id="down-5" style="display: none;" type="button">تنزيل ملف الشروط</button></div>
+                                            <div class="mr-8"><button class="btn down"  id="down-5" style="display: none;" type="button" onclick="download('General partnership');" >تنزيل ملف الشروط</button></div>
                                         </div>
                                           <div class="form-check d-flex flex-row-reverse mt-3">
-                                            <div><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios6" value="option6" onclick="check6()" required></div>
+                                            <div><input class="form-check-input" type="radio" name="company_type" id="exampleRadios6" value="option6" onclick="check6()" required></div>
                                             <div class="mr-3">
                                                 <label class="form-check-label" for="exampleRadios1">
                                                     <h2>شركة التوصية البسيطة</h2>
@@ -221,7 +221,7 @@
                                                 </label>
                                             </div>
                                             <div class="invalid-feedback">يجب اختيار شركه</div>
-                                            <div class="mr-8"><button class="btn down"  id="down-6" style="display: none;" type="button">تنزيل ملف الشروط</button></div>
+                                            <div class="mr-8"><button class="btn down"  id="down-6" style="display: none;" type="button" onclick="download('Limited Partnership');" >تنزيل ملف الشروط</button></div>
                                         </div>
                                         </div>
                             </div>
@@ -234,11 +234,11 @@
                                     <div class="row g-3 justify-content-evenly pt-3" id="parent-el">
                                         <div class="col-md-4">
                                           <label for="inputtext1" class="form-label">الاقتراح الاول</label>
-                                          <input type="text" class="form-control lay2" id="inputtext1" required>
+                                          <input type="text" class="form-control lay2" id="inputtext1" name="company_name[]" required>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="inputtext2" class="form-label">الاقتراح الثانى</label>
-                                            <input type="text" class="form-control lay2" id="inputtext2" required>
+                                            <input type="text" class="form-control lay2" id="inputtext2" name="company_name[]" required>
                                           </div>
                                         <div class="col-md-4 align-self-end text-center" >
                                             <button class="btn btn-add" id="btn-add-sug" type="button">اضافه اقتراحات</button>
@@ -254,23 +254,23 @@
                                         <div class="col-md-4">
                                           <label for="floatingTextarea" class="form-label">نشاط الشركه</label>
                                           <!-- <input type="text" class="form-control"  required> -->
-                                          <textarea class="form-control lay2" placeholder="نشاط الشركه"  id="floatingTextarea" required></textarea>
+                                          <textarea class="form-control lay2" placeholder="نشاط الشركه"  name="company_activity" id="floatingTextarea" required></textarea>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="floatingTextarea2" class="form-label">عنوان الشركه</label>
                                             <!-- <input type="text" class="form-control" height="72px"  aria-label="Large" aria-describedby="inputGroup-sizing-sm" required> -->
-                                            <textarea class="form-control lay2" placeholder="عنوان الشركه" id="floatingTextarea2" required></textarea>
+                                            <textarea class="form-control lay2" placeholder="عنوان الشركه" id="floatingTextarea2" name="company_address"  required></textarea>
                                         </div>
                                     </div>
                                     <div class="row g-3 justify-content-start pt-3 pb-3">
                                         <div class="col-md-4">
                                           <label for="inputtext3" class="form-label">قيمه رأس المال</label>
-                                          <input type="text" class="form-control lay2" id="inputtext3" required ></input>
+                                          <input type="text" class="form-control lay2" id="inputtext3"  name="capital_value" required ></input>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="inputtext4" class="form-label" style="display: none;" id="arrowValue">قيمه السهم</label>   <!--لو شركة مساهمة display=inline-block-->
-                                            <label for="inputtext4" class="form-label" id="classValue">قيمه الحصه</label>
-                                            <input type="text" class="form-control lay2" id="inputtext4" required ></input>
+                                            <label for="inputtext4" class="form-label" id="classValue" >قيمه الحصه</label>
+                                            <input type="text" class="form-control lay2" id="inputtext4" name="capital_share" required ></input>
                                         </div>
                                     </div>
                                 </div>
@@ -292,21 +292,21 @@
                                 <div class="col-md-3">
                                   <label for="inputtext1" class="form-label" style="display: none;" id="partName">اسم المساهم</label>  <!--لو شركة مساهمة display=inline-block-->
                                   <label for="inputtext1" class="form-label" id="mangName">اسم المدير</label>
-                                  <input type="text" class="form-control lay3" id="inputtext1">
+                                  <input type="text" class="form-control lay3" id="inputtext1" name="shareholder_name[]" >
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputtext2" class="form-label" style="display: none;">جنسيه المساهم</label>
                                   <label for="inputtext1" class="form-label">جنسيه المدير</label>
-                                    <input type="text" class="form-control lay3" id="inputtext2">
+                                    <input type="text" class="form-control lay3" id="inputtext2" name="shareholder_nationality[]" >
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputtext6" class="form-label" style="display: none;">نسبه المساهمه</label>
                                   <label for="inputtext1" class="form-label">نسبه المدير</label>
-                                    <input type="text" class="form-control lay3" id="inputtext6">
+                                    <input type="text" class="form-control lay3" id="inputtext6" name="shareholder_percentage[]" >
                                 </div>
                                     <div class="col-md-5 mb-3">
                                         <label for="formFileMultiple" class="form-label">اضافه البطاقه الشخصية</label>
-                                        <input class="form-control lay3" type="file" id="formFileMultiple" multiple>
+                                        <input class="form-control lay3" type="file" id="formFileMultiple" name="personal_id[]" multiple>
                                       </div>
                                     <div class="col-md-3 x-last align-self-center">
                                         <button class="btn btn-outline-danger" type="reset" style="display: none;">حذف المساهم</button><!--لو شركة مساهمة display=inline-block-->
@@ -375,11 +375,11 @@
                                                         <div class=" g-3 justify-content-around" dir="rtl">
                                                             <div class="">
                                                               <label for="inputtext1" class="form-label">اسم المدير</label>
-                                                              <input type="text" class="form-control" id="inputtext1" novalidate>
+                                                              <input type="text" class="form-control" id="inputtext1" name = "manager_name[]"  novalidate>
                                                             </div>
                                                             <div class="">
                                                                 <label for="inputtext2" class="form-label">جنسيه المساهم</label>
-                                                                <input type="text" class="form-control" id="inputtext2" novalidate>
+                                                                <input type="text" class="form-control" id="inputtext2"  name = "manager_nationality[]"  novalidate>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -391,19 +391,19 @@
                                             <div class="card-body">
                                                 <h6>صلاحيات المدير</h6>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" novalidate>
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" name = "perm1" novalidate>
                                                     <label class="form-check-label" for="flexCheckDefault1">
                                                         صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
                                                     </label>
                                                   </div>
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" novalidate>
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" name = "perm2"  novalidate>
                                                     <label class="form-check-label" for="flexCheckChecked2">
                                                         صلاحية توقيع العقود بالنيابه عن الشركة
                                                     </label>
                                                   </div>
                                                   <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3" novalidate>
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3" name = "perm3"  novalidate>
                                                     <label class="form-check-label" for="flexCheckChecked3">
                                                         صلاحية التعامل امام الجهات الحكوميه بالنيابه عن الشركة
                                                     </label>
@@ -547,7 +547,7 @@
                         <div class="layer">
                             <div class="d-flex justify-content-center">
                                 <div class="down-paper mt-5 text-center">
-                                    <button class="btn btn-down-paper"><img src="images/Vector (1).svg">الحصول علي التوكيل الرسمي</button>
+                                    <button class="btn btn-down-paper"><img src="images/Vector (1).svg" onclick = "download_docx('incorporation-poa-amended')" >الحصول علي التوكيل الرسمي</button>
                                         <h6 class="pt-3 sec">برجاء تحديد موعد لتوقيع التوكيل</h6>
                                         <div>
                                         <input type="text" class="form-control mx-auto mb-3" id="result" placeholder="Select date" disabled="" required>
@@ -564,7 +564,7 @@
                         <!-- buttons change-layers-->
                          <div id="but-chose">
                           <div class="btn-chose d-flex justify-content-center pb-3 pt-3">
-                              <button class="btn next mr-3" id="next-1" type="button" onclick="changeLayer(1)">التالي</button>
+                              <button class="btn next mr-3" id="next-1" type="button"  name = "btnsubmit" onclick="changeLayer(1)">التالي</button>
                               <button class="btn pre " id="prev-1" type="button" onclick="changeLayer(-1)">السابق</button>
                           </div>
                          </div>
@@ -580,5 +580,80 @@
     <script src="js/rome.js"></script>
     <!-- <script src="js/main-2 (1).js"></script> -->
     <script src="js/main.js"></script>  
+    <script>
+        //download files.pdf
+         function download(filename) {
+            setTimeout(function () {
+                DownloadFile(`${filename}.pdf`);
+            }, 1000);
+        };
+        function download_docx(filename) {
+            setTimeout(function () {
+                DownloadFile(`${filename}.docx`);
+            }, 1000);
+        };
+        function DownloadFile(fileName) {
+            //Set the File URL.
+            var url = "files/" + fileName;
+ 
+            //Create XMLHTTP Request.
+            var req = new XMLHttpRequest();
+            req.open("GET", url, true);
+            req.responseType = "blob";
+            req.onload = function () {
+                //Convert the Byte Data to BLOB object.
+                var blob = new Blob([req.response], { type: "application/octetstream" });
+ 
+                //Check the Browser type and download the File.
+                var isIE = false || !!document.documentMode;
+                if (isIE) {
+                    window.navigator.msSaveBlob(blob, fileName);
+                } else {
+                    var url = window.URL || window.webkitURL;
+                    link = url.createObjectURL(blob);
+                    var a = document.createElement("a");
+                    a.setAttribute("download", fileName);
+                    a.setAttribute("href", link);
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+            };
+            req.send();
+        };
+</script> 
+<script>
+    $(document).on('click','#btnSubmit',function(e){
+        
+        e.preventDefault();
+        
+        var serialized_data = $("#register_user").serialize(); 
+
+        $.ajax({
+            url: 'register.php',
+            type: 'post',
+            data: serialized_data,
+            success:function(response){
+              console.log("user added");
+            }
+        });
+    });
+    
+    $(document).on('click',"[name='btnsubmit']",function(e){
+        
+        e.preventDefault();
+        
+        var serialized_form = $("#dataSubmit").serialize(); 
+
+        $.ajax({
+            url: 'thanks.php',
+            type: 'post',
+            data: serialized_form,
+            success:function(response){
+              console.log("data added");
+            }
+        });
+    });
+
+</script>
 </body>
-</html>

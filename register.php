@@ -25,11 +25,5 @@
         $select_user_id = "SELECT `id` FROM `users` WHERE `email` = ".$formdata['email'];
       
         $user_id = $connection->query($select_user_id);
-
-        if ($result) {
-            echo "user inserted";
-        } else {
-            echo "user not inserted";
-        }
     }
 ?>
