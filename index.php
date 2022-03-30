@@ -1,7 +1,4 @@
-<?php
-    require_once("register.php");
-    require_once("thanks.php")
-?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +11,7 @@
     <link rel="stylesheet" href="css/rome.css">
     <!-- Style -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="autocomplete.css">
 </head>
 <body>
         <!-- welcom page-->
@@ -64,7 +62,6 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <form>
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">اسم المستخدم</label>
                                                 <input type="text" class="form-control" id="username" name = "username" dir="rtl">
@@ -95,6 +92,7 @@
                         </div>
                     </div>
                 </div>
+            </form>
         </section>
         <!-- <div class="page-wrapper"> -->
         <!--company types-->
@@ -128,6 +126,7 @@
         </div>
         <section>
             <form action="thanks.php" method="POST" id = "dataSubmit" class="needs-validation" novalidate>
+                <input type="hidden" name="userid" id="userid" value="">
                 <div class="main-content" id="main" >
                     <div class="container">
                         <!-- layer--1 money& people -->
@@ -324,7 +323,7 @@
                                 <div class="row g-3 justify-content-center" dir="rtl">
                                     <div class="col-md-6">
                                       <label for="inputtextAdd" class="form-label" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" >ادخل اسماء المديرين</label>
-                                      <input type="text" class="form-control" id="inputtextAdd" autocomplete="additional-name">
+                                      <input type="text" class="form-control" id="gettinghint" autocomplete="additional-name" >
                                     </div>
                                     <div class="col-3 align-self-end" style="text-align: center;">
                                         <button class="btn bttn-add" style="width: 10rem;" id="btn-add-mang" type="button">اضافه</button>
@@ -375,11 +374,11 @@
                                                         <div class=" g-3 justify-content-around" dir="rtl">
                                                             <div class="">
                                                               <label for="inputtext1" class="form-label">اسم المدير</label>
-                                                              <input type="text" class="form-control" id="inputtext1" name = "manager_name[]"  novalidate>
+                                                              <input type="text" class="form-control" id="inputtext1" name = "manager"  novalidate>
                                                             </div>
                                                             <div class="">
                                                                 <label for="inputtext2" class="form-label">جنسيه المساهم</label>
-                                                                <input type="text" class="form-control" id="inputtext2"  name = "manager_nationality[]"  novalidate>
+                                                                <input type="text" class="form-control" id="inputtext2"  name = "manager_type"  novalidate>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -550,7 +549,7 @@
                                     <button class="btn btn-down-paper"><img src="images/Vector (1).svg" onclick = "download_docx('incorporation-poa-amended')" >الحصول علي التوكيل الرسمي</button>
                                         <h6 class="pt-3 sec">برجاء تحديد موعد لتوقيع التوكيل</h6>
                                         <div>
-                                        <input type="text" class="form-control mx-auto mb-3" id="result" placeholder="Select date" disabled="" required>
+                                        <input type="text" class="form-control mx-auto mb-3" name = "signdate" id="result" placeholder="Select date" disabled="" required>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div id="inline_cal"></div>
@@ -564,7 +563,7 @@
                         <!-- buttons change-layers-->
                          <div id="but-chose">
                           <div class="btn-chose d-flex justify-content-center pb-3 pt-3">
-                              <button class="btn next mr-3" id="next-1" type="button"  name = "btnsubmit" onclick="changeLayer(1)">التالي</button>
+                              <button class="btn next mr-3" id="next-1" type="button"  name = "btsubmit" onclick="changeLayer(1)">التالي</button>
                               <button class="btn pre " id="prev-1" type="button" onclick="changeLayer(-1)">السابق</button>
                           </div>
                          </div>
@@ -634,26 +633,32 @@
             type: 'post',
             data: serialized_data,
             success:function(response){
-              console.log("user added");
+                console.log(response);
+              document.getElementById("userid").value = response.id;
             }
         });
     });
-    
-    $(document).on('click',"[name='btnsubmit']",function(e){
-        
-        e.preventDefault();
-        
-        var serialized_form = $("#dataSubmit").serialize(); 
-
+    $(document).on('focus','#gettinghint',function(e){
         $.ajax({
-            url: 'thanks.php',
-            type: 'post',
-            data: serialized_form,
+            url: 'gettinghint.php',
+            type: 'GET',
+            // data: serialized_data,
             success:function(response){
-              console.log("data added");
+                console.log(response);
+                var result = [];
+                for(var i = 0; i < response.length; i++){
+                    result.push(response[i].name);
+                }
+                console.log("succcess");
             }
         });
     });
-
 </script>
+
+<script src="js/autocomplete.js">
+    
+</script>
+<script>
+    autocomplete(document.getElementById("myInput"), countries);
+</script> 
 </body>

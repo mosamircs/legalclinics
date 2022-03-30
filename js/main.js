@@ -470,21 +470,21 @@ const btnAdd = document.querySelector('#btn-add-sug');
                         newEl.innerHTML = `<div class="col-md-3">
                             <label for="inputtext1" class="form-label" style="display: none;">اسم المساهم</label>  <!--لو شركة مساهمة display=inline-block-->
                                   <label for="inputtext1" class="form-label">اسم المدير</label>
-                                  <input type="text" class="form-control lay3" id="inputtext1">
+                                  <input type="text" class="form-control lay3" id="inputtext1" name = "shareholder_name">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputtext2" class="form-label"  style="display: none;">جنسيه المساهم</label>
                                   <label for="inputtext1" class="form-label">جنسيه المدير</label>
-                                    <input type="text" class="form-control lay3" id="inputtext2">
+                                    <input type="text" class="form-control lay3" id="inputtext2" name = "shareholder_nationality">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputtext6" class="form-label"  style="display: none;">نسبه المساهمه</label>
                                   <label for="inputtext1" class="form-label">نسبه المدير</label>
-                                    <input type="text" class="form-control lay3" id="inputtext6">
+                                    <input type="text" class="form-control lay3" id="inputtext6" name = "shareholder_percentage">
                                 </div>
                                     <div class="col-md-5 mb-3">
                                         <label for="formFileMultiple" class="form-label">اضافه البطاقه الشخصية</label>
-                                        <input class="form-control lay3" type="file" id="formFileMultiple" multiple>
+                                        <input class="form-control lay3" type="file" id="formFileMultiple" name = "personal_id" multiple>
                                       </div>
                                       <div class="col-md-3 x-last align-self-center">
                                         <button class="btn btn-outline-danger" type="reset" style="display: none;" onclick="deleted">حذف المساهم</button> <!--لو شركة مساهمة display=inline-block-->
@@ -537,11 +537,11 @@ btnAddMang.addEventListener('click',(e)=>{
                 <div class=" g-3 justify-content-around" dir="rtl">
                     <div class="">
                       <label for="inputtext1" class="form-label">اسم المدير</label>
-                      <input type="text" class="form-control" id="inputtext1" disabled>
+                      <input type="text" class="form-control" id="inputtext1" name = "manager" disabled>
                     </div>
                     <div class="">
                         <label for="inputtext2" class="form-label">جنسيه المساهم</label>
-                        <input type="text" class="form-control" id="inputtext2" disabled>
+                        <input type="text" class="form-control" id="inputtext2" name = "manager_type" disabled>
                     </div>
                 </div>
             </div>
@@ -553,19 +553,19 @@ btnAddMang.addEventListener('click',(e)=>{
     <div class="card-body">
         <h6>صلاحيات المدير</h6>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" checked>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"name = "perm1" checked>
             <label class="form-check-label" for="flexCheckDefault1">
                 صلاحية التوقيع امام البنوك وفتح حسابات بنكية والتعامل على حساب الشركة
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2">
+            <input class="form-check-input" type="checkbox" value="" name = "perm2" id="flexCheckChecked2">
             <label class="form-check-label" for="flexCheckChecked2">
                 صلاحية توقيع العقود بالنيابه عن الشركة
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3">
+            <input class="form-check-input" type="checkbox" value="" name = "perm3" id="flexCheckChecked3">
             <label class="form-check-label" for="flexCheckChecked3">
                 صلاحية التعامل امام الجهات الحكوميه بالنيابه عن الشركة
             </label>

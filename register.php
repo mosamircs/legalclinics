@@ -1,6 +1,9 @@
 <?php
        require_once("header.php");
        require_once ("database.php");
+       $database_instance = Database::getInstance();
+       $connection = $database_instance->getConnection();  //connect to the database
+
        global $formdata;
 
        $formdata = array();
@@ -10,20 +13,58 @@
        }
        if (isset($_POST["email"])) {
            $formdata["email"] = $_POST["email"];
+           $sql = "SELECT * FROM users where email='".$formdata["email"]."'";
+
+           $result = $connection->query($sql);
+        //    $result = mysqli_query();
+            $num_rows = mysqli_num_rows($result);
+            if($num_rows >= 1){
+                // echo "email exist";
+            }else{
+                $email = $formdata["email"];
+                 $sql = "SELECT * FROM users where email='".$formdata["email"]."'";
+           
+                 $result = $connection->query($sql);
+                // echo "Thank you for Submitting. Redirecting back to Home Page";
+            }
        }
        if (isset($_POST["phone"])) {
            $formdata["phone"] = $_POST["phone"];
+           $sql = "SELECT * FROM users where phone='".$formdata["phone"]."'";
+        //    $result = mysqli_query();
+           $result = $connection->query($sql);
+
+           $num_rows = mysqli_num_rows($result);
+           if($num_rows >= 1){
+               // echo "email exist";
+           }else{
+             $phone = $formdata["phone"];
+             $sql = "SELECT * FROM users where phone='".$formdata["phone"]."'";
+             //    $result = mysqli_query();
+                $result = $connection->query($sql);
+            //    $sql = mysqli_query ("INSERT INTO users (phone) VALUES ('$phone')");
+               // echo "Thank you for Submitting. Redirecting back to Home Page";
+           }
        }
-    $database_instance = Database::getInstance();
-    $connection = $database_instance->getConnection();  //connect to the database
+
+
+
     if (isset($formdata["username"])&&isset($formdata["email"])&&isset($formdata["phone"])) {
       
         $insert_user = "INSERT INTO `users` (`name`, `email`, `phone`) VALUES ('".$formdata["username"]."', '".$formdata["email"]."', '".$formdata["phone"]."')";
-    
+        
         $result = $connection->query($insert_user);
 
-        $select_user_id = "SELECT `id` FROM `users` WHERE `email` = ".$formdata['email'];
-      
-        $user_id = $connection->query($select_user_id);
+        $last_id = $connection->insert_id;
+        $data = array(
+            'status' => 200,
+            'id' => $last_id
+        );
+        
+        header("Content-type: application/json");
+        echo json_encode($data);
+        exit();
     }
 ?>
+
+
